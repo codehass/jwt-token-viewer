@@ -1,31 +1,29 @@
-import axios from 'axios';
 interface LoginParams {
   username: string;
   password: string;
 }
 
-export async function login({ username, password }: LoginParams): Promise<void> {
+export async function login({ username, password }: LoginParams): Promise<number> {
 
-   const { data}=await axios.post('http://localhost:3000/login', {
-      username,
-      password
-    })
+  const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password
+        }),
+      });
 
-  console.log(data)
-  return  data;
-
-  //   if (response.status === 200) {
-  //     console.log('Login successful');
-  //   } else {
-  //     console.log('Login failed');
-  //   }
-  // } catch (error) {
-  //   console.log('Login failed', error);
-  // }
+  return  response.status;
 }
-
-
 
 export async function logout() {
-	console.log("logout");
-}
+    const response = await fetch("http://localhost:3000/logout", {
+      method: "GET",
+      // credentials: "include",
+    });
+
+    return response;
+  }
