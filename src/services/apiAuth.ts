@@ -3,9 +3,11 @@ interface LoginParams {
   password: string;
 }
 
+const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+
 export async function login({ username, password }: LoginParams): Promise<number> {
 
-  const response = await fetch("http://localhost:3000/login", {
+  const response = await fetch(`${url}/login`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -20,7 +22,7 @@ export async function login({ username, password }: LoginParams): Promise<number
 }
 
 export async function logout() {
-    const response = await fetch("http://localhost:3000/logout", {
+    const response = await fetch(`${url}/logout`, {
       method: "GET",
       // credentials: "include",
     });
