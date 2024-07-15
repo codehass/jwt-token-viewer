@@ -1,20 +1,22 @@
-import  { FormEvent,useState } from "react";
-import { login } from "./services/apiAuth";
+// Login.tsx
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  // const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+const Login: React.FC = () => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (event:FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setIsLoading(true);
-    // setError('');
 
     try {
-      const data = await login({ username, password });
-      console.log('Received data:', data);
+      await login({ username, password });
+      navigate("/home");
     } catch (error) {
       console.log('Login failed. Please check your username and password.');
       console.error('Error during login:', error);
@@ -22,42 +24,42 @@ function Login() {
       setIsLoading(false);
     }
 
-		setUsername('');
-		setPassword('')
-	}
+    setUsername('');
+    setPassword('');
+  };
 
-	return (
-		<div>
-			<h1>Login Form</h1>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="username">Username:</label>
-					<input
-						type="text"
-						id="username"
-						placeholder="User Name"
-						value={username}
-						required
-						onChange={(e) => setUsername(e.target.value)}
-						disabled={isLoading}
-					/>
-				</div>
-				<div>
-					<label htmlFor="password">Password:</label>
-					<input
-						type="password"
-						id="password"
-						placeholder="Password"
-						value={password}
-						required
-						onChange={(e) => setPassword(e.target.value)}
-						disabled={isLoading}
-					/>
-				</div>
-				<button type="submit" disabled={isLoading}>Submit</button>
-			</form>
-		</div>
-	);
-}
+  return (
+    <div>
+      <h1>Login Form</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="User Name"
+            value={username}
+            required
+            onChange={(e) => setUsername(e.target.value)}
+            disabled={isLoading}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoading}
+          />
+        </div>
+        <button type="submit" disabled={isLoading}>Submit</button>
+      </form>
+    </div>
+  );
+};
 
 export default Login;
