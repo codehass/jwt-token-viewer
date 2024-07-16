@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext'; // Adjust the import as necessary
 
-const url:string = 'http://localhost:3000';
+// const url:string = 'http://localhost:3000';
+const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
 
 const Home = () => {
 const { isAuthenticated, isLoading,logout } = useAuth();
