@@ -26,8 +26,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const checkAuth = async () => {
       try {
         const response = await fetch(`${url}/autoLogin`, {
-          method: "GET",
-          credentials: "include",
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
         });
         if (response.status === 200) {
           setIsAuthenticated(true);
