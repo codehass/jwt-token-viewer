@@ -13,7 +13,8 @@ interface LoginParams {
   password: string;
 }
 
-const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+// const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+const url:string = 'http://localhost:3000'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -26,7 +27,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       try {
         const response = await fetch(`${url}/autoLogin`, {
           method: "GET",
-          // credentials: "include",
+          credentials: "include",
         });
         if (response.status === 200) {
           setIsAuthenticated(true);
@@ -52,7 +53,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           "Content-type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        // credentials: "include",
+        credentials: "include",
       });
 
       if (response.status === 200) {
@@ -73,7 +74,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     try {
       const response = await fetch(`${url}/logout`, {
         method: "GET",
-        // credentials: "include",
+        credentials: "include",
       });
 
       if (response.status === 200) {
