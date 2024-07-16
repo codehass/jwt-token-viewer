@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext'; // Adjust the import as necessary
 
-const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+const url:string = 'http://localhost:3000';
 
 const Home = () => {
 const { isAuthenticated, isLoading,logout } = useAuth();
@@ -46,8 +46,12 @@ const [tokenInfo, setTokenInfo] = useState(null);
       </button>
       <h1>Your Component</h1>
       {tokenInfo ? (
-        <div>{JSON.stringify(tokenInfo)}</div>
-      ) : (
+      Object.keys(tokenInfo).map((key, index) => (
+        <div key={index} style={{display: 'flex', alignItems:'center'}}> 
+          <div style={{fontWeight: 'bold', margin: '10px 0'}}>{key}</div> : {tokenInfo[key]}
+        </div>
+      ))
+    ) : (
         <div>No token info available</div>
       )}
     </div>
