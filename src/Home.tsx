@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 
-const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+
 // const url: string = 'http://localhost:3000';
+const url: string = 'https://hono-proxy-backend.onrender.com';
 
 const Home = () => {
   const { isAuthenticated, isLoading, logout } = useAuth();
@@ -18,14 +19,12 @@ const Home = () => {
             'Content-Type': 'application/json',
           },
         });
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        if (response.ok) {
+          const data = await response.json();
+          setTokenInfo(data.data);
         }
-        const data = await response.json();
-        console.log(data);
-        setTokenInfo(data.data);
       } catch (error) {
-        console.error('Error fetching token info:', error);
+        console.error('please login');
       }
     };
 
@@ -47,7 +46,7 @@ const Home = () => {
       <button className="btn" onClick={handleLogout}>
         Logout
       </button>
-      <h1>Your Component</h1>
+      <h3>Your Component </h3>
       {tokenInfo ? (
         Object.keys(tokenInfo).map((key, index) => (
           <div key={index} style={{ display: 'flex', alignItems: 'center' }}>

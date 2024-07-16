@@ -1,4 +1,3 @@
-// AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface AuthContextType {
@@ -13,8 +12,9 @@ interface LoginParams {
   password: string;
 }
 
-const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
-// const url:string = 'http://localhost:3000'
+// const url: string = 'http://localhost:3000';
+const url: string = 'https://hono-proxy-backend.onrender.com';
+
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             'Content-Type': 'application/json',
           },
         });
-        if (response.status === 200) {
+        if (response.status === 200 || isAuthenticated) {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
     };
     checkAuth();
-  }, []);
+  }, [isAuthenticated]);
 
   const login = async ({ username, password }: LoginParams): Promise<void> => {
     setIsLoading(true);
@@ -89,6 +89,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setIsLoading(false);
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, isLoading, login, logout }}>
