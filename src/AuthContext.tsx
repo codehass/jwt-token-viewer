@@ -13,7 +13,7 @@ interface LoginParams {
   password: string;
 }
 
-const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+const url:string = 'http://master.dbzjdeaojpr79.amplifyapp.com';
 // const url:string = 'http://localhost:3000'
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
