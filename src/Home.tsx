@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext'; // Adjust the import as necessary
 
+const url:string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+
 const Home = () => {
 const { isAuthenticated, isLoading,logout } = useAuth();
 const [tokenInfo, setTokenInfo] = useState(null);
@@ -8,7 +10,7 @@ const [tokenInfo, setTokenInfo] = useState(null);
   useEffect(() => {
     const fetchTokenInfo = async () => {
       try {
-        const response = await fetch('http://localhost:3000/token_info', {
+        const response = await fetch(`${url}/token_info`, {
           method: 'GET',
           credentials: 'include',
         });
