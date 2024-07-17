@@ -12,7 +12,8 @@
 
 This application allows users to view the content of JWT tokens. It provides an interface to decode and display the payload of JWT tokens, making it easier to understand the token's structure and content.
 
-![Screenshot of Frontend](/src/imgs/result.png)
+![Screenshot of Frontend](/src/imgs/login.png)
+![Screenshot of Frontend](/src/imgs/results.png)
 
 ## Technologies Used
 
