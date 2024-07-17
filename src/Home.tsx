@@ -3,7 +3,8 @@ import { useAuth } from './AuthContext';
 
 
 // const url: string = 'http://localhost:3000';
-const url: string = 'https://hono-proxy-backend.onrender.com';
+// const url: string = 'https://hono-proxy-backend.onrender.com';
+const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
 
 const Home = () => {
   const { isAuthenticated, isLoading, logout } = useAuth();
