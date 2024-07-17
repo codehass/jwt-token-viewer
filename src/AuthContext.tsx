@@ -12,9 +12,9 @@ interface LoginParams {
   password: string;
 }
 
-// const url: string = 'http://localhost:3000';
+const url: string = 'http://localhost:3000';
 // const url: string = 'https://hono-proxy-backend.onrender.com';
-const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+// const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
 
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
+import './TokenInfo.css';
 
 
-// const url: string = 'http://localhost:3000';
+const url: string = 'http://localhost:3000';
 // const url: string = 'https://hono-proxy-backend.onrender.com';
-const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
+// const url: string = 'https://master.dbzjdeaojpr79.amplifyapp.com';
 
 const Home = () => {
   const { isAuthenticated, isLoading, logout } = useAuth();
@@ -35,7 +36,7 @@ const Home = () => {
   }, [isAuthenticated, isLoading]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   const handleLogout = async () => {
@@ -43,15 +44,15 @@ const Home = () => {
   };
 
   return (
-    <div>
+  <div className="token-info-container">
       <button className="btn" onClick={handleLogout}>
         Logout
       </button>
-      <h3>Your Component </h3>
+      <h3>JWT Info</h3>
       {tokenInfo ? (
         Object.keys(tokenInfo).map((key, index) => (
-          <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ fontWeight: 'bold', margin: '10px 0' }}>{key}</div> : {tokenInfo[key]}
+          <div key={index} className="token-info-item">
+            <div className="token-info-key">{key}</div> : {tokenInfo[key]}
           </div>
         ))
       ) : (
