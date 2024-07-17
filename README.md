@@ -1,30 +1,50 @@
-# React + TypeScript + Vite
+# JWT token viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Project Description](#project-description)
+- [Technologies Used](#technologies-used)
+- [Setup](#setup)
+- [Running the Project Locally](#running-the-project-locally)
+- [License](#license)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Description
 
-## Expanding the ESLint configuration
+This application allows users to view the content of JWT tokens. It provides an interface to decode and display the payload of JWT tokens, making it easier to understand the token's structure and content.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- React
+- Vite
+- TypeScript
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Setup
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository:
+
+    ```bash
+    git https://github.com/codehass/jwt-token-viewer.git
+    
+    cd jwt-token-viewer
+
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+## Running the Project Locally
+
+1. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+2. Open your browser and navigate to `http://localhost:5174` (or the port specified in the console).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
